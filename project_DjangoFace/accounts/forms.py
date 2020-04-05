@@ -34,10 +34,7 @@ class MyForm(UserCreationForm):
 class MyAuthForm(AuthenticationForm):
     error_messages = {
         'inactive': ("This account is inactive." ),
-        'invalid_login': _(
-            "Ваш логен не  активен, обратитесь к администратору для подтверждения личности!"
-
-        ),
+        'invalid_login': _("Ваш логин не  активен, обратитесь к администратору для подтверждения личности!"),
 
     }
 
@@ -65,11 +62,8 @@ class MyPasswordChangeForm(PasswordChangeForm):
 
 
     def __init__(self, *args, **kwargs):
+
         super(MyPasswordChangeForm, self).__init__(*args, **kwargs)
 
         for fieldname in ['old_password', 'new_password1', 'new_password2']:
             self.fields[fieldname].help_text = None
-
-
-
-

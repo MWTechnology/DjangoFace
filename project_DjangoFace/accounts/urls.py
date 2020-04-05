@@ -22,7 +22,9 @@ urlpatterns = [
 
 
     path ('', s.Main, name='main'),
+    path ('', s.Main, name='account_login'),
 
+    path ('someview/', s.someview, name='someview'),
 
 ]
 

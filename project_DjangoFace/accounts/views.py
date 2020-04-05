@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
@@ -43,6 +43,7 @@ class MyLoginView(LoginView):
 
 
 class MyPasswordResetView(PasswordResetView):
+
     template_name = "account/password_reset.html"
     template_name_sent = "account/password_reset_sent.html"
     form_class = MyPasswordResetForm
@@ -51,3 +52,7 @@ class MyPasswordResetView(PasswordResetView):
 class MyPasswordChangeView(PasswordChangeView):
     template_name = "registration/password_change_form.html"
     form_class = MyPasswordChangeForm
+
+
+def someview(request):
+    return redirect(request.session['return_path'])
