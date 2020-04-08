@@ -5,8 +5,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import FormView
 from accounts.forms import MyForm, MyAuthForm, MyPasswordResetForm, MyPasswordChangeForm
-from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth.views import LoginView, PasswordChangeView, LogoutView
 from account.views import PasswordResetView
+from django.urls import reverse_lazy
 from django.template.loader import render_to_string
 
 # Вариант регистрации на базе класса FormView
@@ -35,8 +36,7 @@ class MyRegisterFormView(FormView):
     def form_invalid(self, form):
         return super(MyRegisterFormView, self).form_invalid(form)
 
-def Main (request):
-    return render(request,'registration/main.html')
+
 
 class MyLoginView(LoginView):
     authentication_form = MyAuthForm
@@ -56,3 +56,6 @@ class MyPasswordChangeView(PasswordChangeView):
 
 def someview(request):
     return redirect(request.session['return_path'])
+
+class MyLogoutView(LogoutView):
+    template_name = "registration/login.html"

@@ -10,7 +10,7 @@ from account.views import (
 urlpatterns = [
     path('login/', s.MyLoginView.as_view(), name='login'),
 
-    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('login/', s.MyLogoutView.as_view(), name='logout'),
 
     path('password-change/', s.MyPasswordChangeView.as_view(), name='password_change'),
     path('password-change/done/', views.PasswordChangeDoneView.as_view(), name='password_change_done'),
@@ -21,8 +21,8 @@ urlpatterns = [
     path('reset/<uidb36>/<token>/', PasswordResetTokenView.as_view(), name='account_password_reset_token'),
 
 
-    path ('', s.Main, name='main'),
-    path ('', s.Main, name='account_login'),
+
+
 
     path ('someview/', s.someview, name='someview'),
 

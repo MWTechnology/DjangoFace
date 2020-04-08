@@ -8,8 +8,10 @@ class User(AbstractUser):
 
 
     def __str__(self):
-        return '%s %s' % (self.username, self.email)
+        return self.username
 
+    def get_absolute_url(self):
+        return reverse('suspect_detail', kwargs={'pk': self.pk})
 
 
     class Meta:
